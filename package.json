@@ -1,0 +1,12 @@
+{
+    "name":"latte_worker",
+    "version":"0.0.1",
+    "private":false,
+    "main":"./lib/index.js",
+    "dependencies":{
+      	"latte_lib": "*",
+      	"latte_db": "*",
+      	"latte_require": "*",
+      	"latte_watch": "*"
+    }
+}
