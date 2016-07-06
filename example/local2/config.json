@@ -1,0 +1,9 @@
+{
+	"host": "192.168.1.25",
+	"port": 27017,
+	"database": "newsTest",
+	"collections": ["news"],
+	"maxPoolNum": 100,
+	"idleTimeoutMillis": 30000,
+	"minPoolNum": 10
+}
