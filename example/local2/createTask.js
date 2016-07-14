@@ -7,9 +7,40 @@ var all = {
 		"hipertextual":  {
 	 		url: "http://alt1040.com/feed/"
 	 	}
+	},
+	"Nacional": {
+ 		"Jornada":  {
+	 		url: "http://www.jornada.unam.mx/rss/politica.xml"
+	 	}
+	},
+	"Internacional": {
+ 		"20minutos":  {
+	 		url: "http://www.20minutos.es/rss/internacional/"
+	 	}
+	},
+	"Estilo de Vida": {
+ 		"Vitonica":  {
+	 		url: "http://www.vitonica.com/index.xml"
+	 	}
+	},
+	"Entretenimiento": {
+ 		"E¡ Online":  {
+	 		url: "http://la.eonline.com/andes/feed"
+	 	}
+	},
+	"Destacados": {
+ 		"No puedo creer":  {
+	 		url: "http://feeds.feedburner.com/NoPuedoCreerQueLoHayanInventado"
+	 	}
+	},
+	"Deportes": {
+ 		"Fichajes":  {
+	 		url: "http://feeds.feedburner.com/fichajes-rumores"
+	 	}
 	}
 };
 */
+
 
 var all = {
  	"Tecnología" : {
@@ -23,10 +54,7 @@ var all = {
 	 		url: "http://feeds.weblogssl.com/applesfera"
 	 	},
 	 	"Xataka Movil":  {
-	 		url: "http://www.xatakamovil.com/atom.xml"
-	 	},
-	 	"Todo Juegos":  {
-	 		url: "http://feeds.feedburner.com/TodoJuegos"
+	 		url: "http://www.xatakamovil.com/index.xml"
 	 	}
  	},
  	"Nacional": {
@@ -66,9 +94,6 @@ var all = {
 	 	},
 	 	"Directo al Paladar":  {
 	 		url: "http://feeds.weblogssl.com/directoalpaladar"
-	 	},
-	 	"Saborgourmet.com":  {
-	 		url: "http://saborgourmet.com/feed/"
 	 	}
  	},
  	"Entretenimiento": {
@@ -100,17 +125,11 @@ var all = {
  		"Fichajes":  {
 	 		url: "http://feeds.feedburner.com/fichajes-rumores"
 	 	},
-	 	"Marca":  {
-	 		url: "http://rss.marca.com/rss/descarga.htm?data2=425"
-	 	},
 	 	"Motorpasion":  {
 	 		url: "http://www.motorpasion.com/atom.xml"
 	 	},
 	 	"20minutos":  {
 	 		url: "http://www.20minutos.es/rss/deportes/"
-	 	},
-	 	"Mundo Deportivo":  {
-	 		url: "http://feeds.feedburner.com/mundodeportivo-futbol-fc-barcelona"
 	 	},
 	 	"nbamaniacs":  {
 	 		url: "http://feeds.feedburner.com/nbamaniacs"
@@ -250,9 +269,9 @@ var Rss = function(config, callback) {
 				}
 				var middle = parseInt((min + max)/2);
 				if(RssUtils.getTime(items[middle]) > time) {
-					findgt(items, time, middle, max);
+					return findgt(items, time, middle, max);
 				}else{
-					findgt(items, time, min , middle);
+					return findgt(items, time, min , middle);
 				}
 			}
 		this.findgt = function(continuation, array, callback) {
@@ -260,9 +279,11 @@ var Rss = function(config, callback) {
 			this.query({
 				continuation :continuation
 			}, function(err, data) {
+
 				if(err) {
 					return callback(err);
 				}
+				
 				if(data.items.length == 0) {
 					return callback(null, array);
 				}
@@ -270,20 +291,24 @@ var Rss = function(config, callback) {
 					return callback(null, array);
 				}
 				var last = data.items[data.items.length -1];
+				
 				if(self.end.time < RssUtils.getTime(last)) {
 					array = data.items.reverse().concat(array);
 					return  self.findgt(RssUtils.getContinuation(last.id), array, callback);
 				}
 
 				var index = findgt(data.items, self.end.time, 0, data.items.length -1);
+				
 				array = data.items.slice(0, index + 1).reverse().concat(array);
+				console.log("update", array.length);
 				return callback(null, array);
 			});
 		}
 	this.wait = function() {		
-		console.log("waiting");
+		
 		var self = this;
 		this.findgt(null, [], function(err, data) {
+
 			if(err) {
 				self.timer = setTimeout(self.wait.bind(self), self.config.timeout);
 				return;
@@ -292,7 +317,7 @@ var Rss = function(config, callback) {
 				self.timer = setTimeout(self.wait.bind(self), self.config.timeout);
 				return;
 			}
-			console.log(data.length);
+			
 			var o = data[0];
 			self.createTask(data);
 			self.end = {
@@ -329,7 +354,8 @@ module.exports = {
 									from: from,
 									tag: tag,
 									url: url,
-									startTime: time
+									startTime: time,
+									timeout: 1000*60 *5
 								}, callback);
 							});
 						}else{
@@ -337,7 +363,8 @@ module.exports = {
 								from: from,
 								tag: tag,
 								url: o.url,
-								startTime: time
+								startTime: time,
+								timeout: 1000*60 *5
 							}, callback);
 						}
 					})(from, tag);

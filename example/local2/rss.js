@@ -13,7 +13,11 @@ var Rss = {};
 		}
 			var getImage = function(data)  {
 				var startIndex = data.indexOf("<img");
+				if(startIndex == -1) {
+					return "";
+				}
 				var endIndex = data.indexOf(">", startIndex);
+
 				data = data.substring(startIndex + 4, endIndex);
 				
 				startIndex = data.indexOf("src=\"");
@@ -27,21 +31,27 @@ var Rss = {};
 			if(data.visual && data.visual.url) {
 				return data.visual.url;
 			}
-			if(data.summary) {
-				return getImage(data.summary.content);
-			}
+			
 			if(data.content) {
 				return getImage(data.content.content);
 			}
+			if(data.summary) {
+				return getImage(data.summary.content);
+			}
 			
 		}
+		this.getKeywords = function(data) {
+			return data.keywords || [];
+		}
 		this.getContent = function(data) {
-			if(data.summary) {
-				return data.summary.content;
-			}
 			if(data.content) {
-				return data.content.content;
+				return data.content.content || ""; 
 			}
+			if(data.summary) {
+				return data.summary.content || "";
+			}
+			
+			return "";
 		}
 		this.getUrl = function(data) {
 			return data.alternate[0].href;
@@ -53,7 +63,8 @@ var Rss = {};
 			content: self.getContent(data),
 			title: self.getTitle(data),
 			image: self.getImage(data),
-			rssId: data.id
+			rssId: data.id,
+			keywords: self.getKeywords(data)
 		};
 	}
 }).call(Rss);
