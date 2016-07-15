@@ -131,6 +131,9 @@ var all = {
 	 	},
 	 	"Marcianos": {
 	 		url: "https://feedly.com/i/subscription/feed/http://marcianos.com.mx/feed/"
+	 	},
+	 	"LBV": {
+	 		url: "https://feedly.com/i/subscription/feed/http://www.labrujulaverde.com/feed"
 	 	}
  	},
  	"Deportes": {
