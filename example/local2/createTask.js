@@ -55,6 +55,12 @@ var all = {
 	 	},
 	 	"Xataka Movil":  {
 	 		url: "http://www.xatakamovil.com/index.xml"
+	 	},
+	 	"Fancueva": {
+	 		url: "https://feedly.com/i/subscription/feed/http://feeds.feedburner.com/fancueva"
+	 	},
+	 	"Microsiervos": {
+	 		url: "https://feedly.com/i/subscription/feed/http://www.microsiervos.com/index.xml"
 	 	}
  	},
  	"Nacional": {
@@ -119,6 +125,12 @@ var all = {
 	 	},
 	 	"Culturizando":  {
 	 		url: "http://feeds.feedburner.com/Culturizando"
+	 	},
+	 	"Algarabia": {
+	 		url: "https://feedly.com/i/subscription/feed/http://algarabia.com/feed/"
+	 	},
+	 	"Marcianos": {
+	 		url: "https://feedly.com/i/subscription/feed/http://marcianos.com.mx/feed/"
 	 	}
  	},
  	"Deportes": {
