@@ -60,7 +60,7 @@ var tfIdf = function(words, client, cb) {
 		var d = 0.85;
 		var all = {};
 		for(var i = 0, len = words.length; i < len; i++) {
-			all[words[i]] = all[words[i]].indexOf? all[words[i]] :[];
+			all[words[i]] = all[words[i]]? all[words[i]].indexOf? all[words[i]]:[] :[];
 			
 			for(var k = -5; k < 5; k++) {
 				if(words[i+k] == null || k == 0) {
