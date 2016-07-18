@@ -19,7 +19,7 @@ var CreateTask = require("./createTask").createTask( function(data) {
 	workerMaster.addTasks("local", "keyWords",data);
 });
 */
-require("./creatrAddContentTask").createTask(function(data) {
+require("./createAddContentTask").createTask(function(data) {
 	workerMaster.addTasks("local", "addMongodb", data);
 });
 
