@@ -70,7 +70,7 @@ var tfIdf = function(words, client, cb) {
 						all[words[i]].push(words[i+k]);
 					}
 				}catch(e) {
-					console.log("textRankerror:",words[i], all[words[i]]);
+					console.log("textRankerror:",words[i], all[words[i]], words.length,i);
 					throw "Test";
 
 				}
