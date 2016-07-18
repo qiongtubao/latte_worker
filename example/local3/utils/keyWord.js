@@ -65,9 +65,15 @@ var tfIdf = function(words, client, cb) {
 				if(words[i+k] == null || k == 0) {
 					continue;
 				}
-				if(all[words[i]].indexOf(words[i+k]) == -1) {
-					all[words[i]].push(words[i+k]);
+				try{
+					if(all[words[i]].indexOf(words[i+k]) == -1) {
+						all[words[i]].push(words[i+k]);
+					}
+				}catch(e) {
+					console.log("textRankerror:",words[i], all);
+
 				}
+				
 			}
 		}
 		//console.log(all);
