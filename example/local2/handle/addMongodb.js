@@ -27,7 +27,7 @@ var Rss = require("../rss.js");
 			mongodb.news.update({
 				tag: data.tag,
 				from: data.from,
-				url: o.url
+				content: o.content
 			}, {
 				$set: o
 			}, {
