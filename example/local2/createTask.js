@@ -328,6 +328,7 @@ var Rss = function(config, callback) {
 		this.findgt(null, [], function(err, data) {
 
 			if(err) {
+				console.log("wait err:",err);
 				self.timer = setTimeout(self.wait.bind(self), self.config.timeout);
 				return;
 			}
