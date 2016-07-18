@@ -9,6 +9,7 @@
 				return;
 			}
 			client.news.find({
+				keyword1: null,
 				time: {
 					$gt: lastTime
 				}
@@ -25,7 +26,7 @@
 						if(data.length == 32) {
 							setTimeout(function() {
 								timeDo(callback);
-							}, 1000 * 60 * 5);
+							}, 1000 * 60 * 2.5);
 						}else{
 							setTimeout(function() {
 								timeDo(callback);
