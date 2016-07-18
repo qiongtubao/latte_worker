@@ -3,7 +3,7 @@ var Mongodb = require("latte_db").mongodb;
 var config = require("./config.json");
 Mongodb.bindDb("news", config);
 var workerMaster =  WorkerMaster.create({
-	cpus: 16
+	cpus: 8
 });
 var data = [];
 var time1 = Date.now();

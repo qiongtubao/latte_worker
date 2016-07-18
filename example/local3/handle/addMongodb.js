@@ -33,6 +33,7 @@ var Rss = require("../utils/rss.js");
 			}, {
 				upsert: true
 			},function(err, result){
+				
 				callback(err, result);
 			});
 		}else{
