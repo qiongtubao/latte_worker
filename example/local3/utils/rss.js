@@ -68,4 +68,4 @@ var Rss = {};
 		};
 	}
 }).call(Rss);
-module.exports = Rss;rss.js
+module.exports = Rss;
