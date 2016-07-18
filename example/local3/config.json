@@ -1,5 +1,5 @@
 {
-	"host": "54.218.76.40",
+	"host": "192.168.1.25",
 	"port": 27017,
 	"database": "newsTest",
 	"collections": ["news"],
