@@ -57,10 +57,10 @@ var all = {
 	 		url: "http://www.xatakamovil.com/index.xml"
 	 	},
 	 	"Fancueva": {
-	 		url: "https://feedly.com/i/subscription/feed/http://feeds.feedburner.com/fancueva"
+	 		url: "http://feeds.feedburner.com/fancueva"
 	 	},
 	 	"Microsiervos": {
-	 		url: "https://feedly.com/i/subscription/feed/http://www.microsiervos.com/index.xml"
+	 		url: "http://www.microsiervos.com/index.xml"
 	 	}
  	},
  	"Nacional": {
@@ -127,16 +127,16 @@ var all = {
 	 		url: "http://feeds.feedburner.com/Culturizando"
 	 	},
 	 	"Algarabia": {
-	 		url: "https://feedly.com/i/subscription/feed/http://algarabia.com/feed/"
+	 		url: "http://algarabia.com/feed/"
 	 	},
 	 	"Marcianos": {
-	 		url: "https://feedly.com/i/subscription/feed/http://marcianos.com.mx/feed/"
+	 		url: "http://marcianos.com.mx/feed/"
 	 	},
 	 	"LBV": {
-	 		url: "https://feedly.com/i/subscription/feed/http://www.labrujulaverde.com/feed"
+	 		url: "http://www.labrujulaverde.com/feed"
 	 	},
 	 	"UPSOCL": {
-	 		url: "https://feedly.com/i/subscription/feed/http://www.upsocl.com/feed/"
+	 		url: "http://www.upsocl.com/feed/"
 	 	}
  	},
  	"Deportes": {
