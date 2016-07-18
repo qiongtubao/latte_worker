@@ -134,6 +134,9 @@ var all = {
 	 	},
 	 	"LBV": {
 	 		url: "https://feedly.com/i/subscription/feed/http://www.labrujulaverde.com/feed"
+	 	},
+	 	"UPSOCL": {
+	 		url: "https://feedly.com/i/subscription/feed/http://www.upsocl.com/feed/"
 	 	}
  	},
  	"Deportes": {
