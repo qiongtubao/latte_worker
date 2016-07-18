@@ -36,7 +36,7 @@ var tfIdf = function(words, client, cb) {
 			
 		});
 		var result = [];
-		//console.log("tfIdf", idfsFuns.length);
+		console.log("tfIdf", idfsFuns.length);
 		latte_lib.async.parallel(idfsFuns,function(err, data) {
 			
 			if(err) {

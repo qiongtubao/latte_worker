@@ -25,7 +25,7 @@
 						if(data.length == 32) {
 							setTimeout(function() {
 								timeDo(callback);
-							}, 1000 * 60 * 2);
+							}, 1000 * 60 * 5);
 						}else{
 							setTimeout(function() {
 								timeDo(callback);
