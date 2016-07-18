@@ -61,6 +61,9 @@ var latte_lib = require("latte_lib");
 						keyword2:  keyword2
 					}
 				},function(err, result){
+					if(err){
+						console.log(err);
+					}	
 					callback(err, result);
 				});	
 				
