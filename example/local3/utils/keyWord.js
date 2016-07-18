@@ -21,7 +21,8 @@ var tfIdf = function(words, client, cb) {
 			}else{
 				kys[data] = 1;
 				idfsFuns.push(function(callback) {
-					var o =  data.replace(/\*/img, "\\*").replace(/\?/img, "\\?");
+					var o =  data.replace(/\*/img, "\\*").replace(/\?/img, "\\?")
+					.replace(/\[/img, "\\[").replace(/\]/img, "\\]");
 					//console.log("qc:",o);
 					var reg = new RegExp( " "+o+" ", "img");
 					client.news.find({content: reg
