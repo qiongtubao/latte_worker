@@ -184,7 +184,7 @@ var tfIdf = function(words, client, cb) {
 		var cheerio = require("cheerio");
 		var dom = cheerio.load(data.content);
 		var text = getDomText(dom.root());
-		var words = (data.title  + " " + text).replace(/\(|\)|:|,|(\.\s+)/img, " ").split(/\s+/);
+		var words = (data.title  + " " + text).replace(/\(|\)|:|,|(\.\s+)|\?|\*|\[|\]/img, " ").split(/\s+/);
 		words = words.filter(function(o) {
 			if(+o == o|| o == null || o == "." ||o == "" || noKeyWords.indexOf(o) != -1 || noKeyWords.indexOf(o.toLowerCase()) != -1) {
 				return null;
