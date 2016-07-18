@@ -60,20 +60,17 @@ var tfIdf = function(words, client, cb) {
 		var d = 0.85;
 		var all = {};
 		for(var i = 0, len = words.length; i < len; i++) {
-			all[words[i]] = all[words[i]] ||[];
+			all[words[i]] = all[words[i]].indexOf? all[words[i]] :[];
+			
 			for(var k = -5; k < 5; k++) {
 				if(words[i+k] == null || k == 0) {
 					continue;
 				}
-				try{
-					if(all[words[i]].indexOf(words[i+k]) == -1) {
+				
+					if( all[words[i]].indexOf(words[i+k]) == -1) {
 						all[words[i]].push(words[i+k]);
 					}
-				}catch(e) {
-					console.log("textRankerror:",words[i], all[words[i]], words.length,i, Object.keys(all).length);
-					throw "Test";
-
-				}
+			
 				
 			}
 		}
