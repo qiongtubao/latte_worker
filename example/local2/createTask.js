@@ -120,9 +120,7 @@ var all = {
 	 	"Curistoria":  {
 	 		url: "http://curistoria.blogspot.com/feeds/posts/default"
 	 	},
-	 	"Yorokobu":  {
-	 		url: "http://www.yorokobu.es/feed/"
-	 	},
+	 	
 	 	"Culturizando":  {
 	 		url: "http://feeds.feedburner.com/Culturizando"
 	 	},
