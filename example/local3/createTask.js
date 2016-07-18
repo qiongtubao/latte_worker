@@ -9,14 +9,12 @@
 				return;
 			}
 			client.news.find({
-				keyword1: {
-					$size: 0
-				},
 				time: {
 					$gt: lastTime
 				}
 			}).sort({time:1}).limit(32).toArray(function(err , data) {
 				//console.log(err, data);
+				console.log(err, data.length);
 				if(err) {
 					console.log(err);
 					return;
