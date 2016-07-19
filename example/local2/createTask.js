@@ -161,8 +161,13 @@ var Rss = function(config, callback) {
 	this.init();
 };
 (function() {
+	this.clearTimer = function() {
+		this.timer &&  clearTimeout(this.timer) ;
+		this.timer = null;
+	}
 	this.init = function() {
 		var self = this;
+		this.clearTimer();
 		if(!this.start  || !this.end) {
 			Mongodb.news.command(function(err, client, dbcb) {
 				if(err) {
@@ -209,6 +214,7 @@ var Rss = function(config, callback) {
 		}
 	}
 		this.query = function(config, callback) {
+			this.clearTimer();
 			var onceCallback = (function() {
 				var called = false;
 				return function(err, data) {
@@ -252,6 +258,7 @@ var Rss = function(config, callback) {
 		}
 	this.copy = function() {
 		var self = this;
+		this.clearTimer();
 		this.query({
 			continuation: this.start && RssUtils.getContinuation(this.start.rssId)
 		}, function(err, data) {
@@ -292,6 +299,7 @@ var Rss = function(config, callback) {
 			}
 		this.findgt = function(continuation, array, callback) {
 			var self = this;
+			this.clearTimer();
 			this.query({
 				continuation :continuation
 			}, function(err, data) {
@@ -323,6 +331,7 @@ var Rss = function(config, callback) {
 	this.wait = function() {		
 		
 		var self = this;
+		this.clearTimer();
 		this.findgt(null, [], function(err, data) {
 
 			if(err) {
@@ -345,6 +354,7 @@ var Rss = function(config, callback) {
 		
 	}
 	this.doing = function() {
+		this.clearTimer();
 		if(!this.start || this.start.time >  this.config.startTime) {
 			this.copy();
 		}else{
