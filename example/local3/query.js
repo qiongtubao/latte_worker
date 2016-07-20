@@ -7,12 +7,12 @@ Mongodb.news.command(function(err, client, dbcb) {
 			$size :4
 		}
 	}).count(function(err, data) {
-		console.log("keyword1:",err, data.length);
+		console.log("keyword1:",err, data);
 	});
 	
 	client.news.find({
 	}).count(function(err, data) {
-		console.log("all",err, data.length);
+		console.log("all",err, data);
 	});
 	/**
 	client.news.find({
