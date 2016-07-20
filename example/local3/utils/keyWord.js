@@ -182,7 +182,7 @@ var tfIdf = function(words, client, cb) {
 	}
 
 	var isUppercase = function(word) {
-		if(word == "") {
+		if(word == "" || !word) {
 			return false;
 		}
 		return /^[A-Z]+$/.test(word[0] ) ;
