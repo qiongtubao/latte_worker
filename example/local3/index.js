@@ -14,15 +14,16 @@ var config = {
 };
 var result = workerMaster.setTaskConfig("local", config);
 var startTime = new Date(2016, 6, 4);
-
+/**
 var CreateTask = require("./createTask").createTask( function(data) {
 	workerMaster.addTasks("local", "keyWords",data);
 });
-/**
+*/
+
 require("./createAddContentTask").createTask(startTime.getTime(), function(data) {
 	workerMaster.addTasks("local", "addMongodb", data);
 });
-*/
+
 workerMaster.on("local", function(info) {
 	console.log(info);
 	console.log((info.endTime - info.startTime )/ 60 /1000);

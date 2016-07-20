@@ -181,20 +181,42 @@ var tfIdf = function(words, client, cb) {
 		
 	}
 
-
+	var isUppercase = function(word) {
+		return /^[A-Z]+$/.test(word[0] ) ;
+	}
 	var getText = function(data) {
 		//console.log(data);
 		var cheerio = require("cheerio");
 		var dom = cheerio.load(data.content);
 		var text = getDomText(dom.root());
 		var words = (data.title  + " " + text).replace(/\(|\)|:|,|(\.\s+)|\?|\*|\[|\]/img, " ").split(/\s+/);
-		words = words.filter(function(o) {
-			if(+o == o|| o == null || o == "." ||o == "" || noKeyWords.indexOf(o) != -1 || noKeyWords.indexOf(o.toLowerCase()) != -1) {
-				return null;
+		var result = [];
+		for(var i = 0, len = words.length; i < len; i++) {
+			var o = words[i];
+			if(+o == o || o == null || o == "." || o == "" || noKeyWords.indexOf(o) != -1) {
+				continue;
 			}
-			return o;
-		});	
-		return words;
+
+			
+				
+				if(isUppercase(o)) {
+					var nword = [o];
+					o = words[++i];
+					while(isUppercase(o)) {
+						nword.push(o);
+						o = words[++i];
+					}
+					result.push(nword.join(" "));
+					i--;
+				}else{
+					result.push(o);
+				}
+			
+			
+
+		}
+		
+		return result;
 	}
 	module.exports = {
 		tfIdf : tfIdf,
