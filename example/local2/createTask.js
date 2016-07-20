@@ -259,10 +259,13 @@ var Rss = function(config, callback) {
 	this.copy = function() {
 		var self = this;
 		this.clearTimer();
+
 		this.query({
 			continuation: this.start && RssUtils.getContinuation(this.start.rssId)
 		}, function(err, data) {
+			console.log("copy");
 			if(err) {
+				console.log(err);
 				self.timer = setTimeout(self.copy.bind(self), self.config.timeout);
 				return;
 			}
