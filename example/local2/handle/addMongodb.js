@@ -25,8 +25,8 @@ var Rss = require("../rss.js");
 		if(mongodb) {
 			var o = Rss.getObject(data.data);
 			mongodb.news.update({
-				tag: o.tag,
-				from: o.from,
+				tag: data.tag,
+				from: data.from,
 				title: o.title,
 				time: o.time,
 			}, {
